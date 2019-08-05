@@ -19,7 +19,18 @@
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "husky": "^3.0.2",
+    "lint-staged": "^9.2.1",
     "vue-template-compiler": "^2.6.10"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": ["lint"],
+    "*.vue": ["lint"]
   },
   "eslintConfig": {
     "root": true,
