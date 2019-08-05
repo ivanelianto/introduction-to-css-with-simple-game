@@ -1,4 +1,4 @@
-# rig-css-game
+# Introduction to CSS with Simple Game
 
 ## Project setup
 ```
