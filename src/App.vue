@@ -5,12 +5,10 @@
 </template>
 
 <script>
-
 export default {
-  name: 'app',
-  components: {
-  }
-}
+  name: "app",
+  components: {}
+};
 </script>
 
 <style>
@@ -20,7 +18,7 @@ export default {
   padding: 0;
   margin: 0;
   outline: none;
-  font-family: "Roboto", "Arial";
+  box-sizing: border-box;
 }
 
 a {
@@ -34,5 +32,11 @@ a:visited {
 
 #app {
   min-height: 100vh;
+}
+
+.level-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
 }
 </style>

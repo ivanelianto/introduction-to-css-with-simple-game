@@ -35,11 +35,9 @@
     }
   },
   "lint-staged": {
-    "*.js": [
-      "lint"
-    ],
-    "*.vue": [
-      "lint"
+    "*.{js,vue}": [
+      "prettier --write",
+      "git add"
     ]
   },
   "eslintConfig": {
