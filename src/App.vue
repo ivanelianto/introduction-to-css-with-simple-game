@@ -39,4 +39,8 @@ a:visited {
   align-items: center;
   width: 100%;
 }
+
+iframe {
+  border: none;
+}
 </style>

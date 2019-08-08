@@ -1,7 +1,7 @@
 import Vue from "vue";
 import App from "./App.vue";
 import VueRouter from "vue-router";
-import LevelOne from "./components/level-1/LevelOne.vue";
+import LevelOne from "./components/LevelOne/LevelOne.vue";
 import Home from "./components/Home.vue";
 import * as monaco from "monaco-editor";
 
