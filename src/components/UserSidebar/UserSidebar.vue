@@ -1,28 +1,22 @@
 <template>
   <div class="sidebar-container" @keydown="onKeyDown" @keyUp="onKeyUp">
+    <div class="menu-container">
+      <span class="hamburger-icon-wrapper">
+        <span class="hamburger-icon-line"></span>
+        <span class="hamburger-icon-line"></span>
+        <span class="hamburger-icon-line"></span>
+      </span>
+    </div>
+
     <div class="level-description-container">
       <h3 class="level-text">Level {{ level }}</h3>
 
       <p class="description-text">
-        {{ description }}
+        <span v-html="description"></span>
       </p>
     </div>
 
     <div class="editor-container">
-      <div class="css-editor-container">
-        <div class="editor-description">
-          <b class="editor-title">CSS Editor</b>
-          <p class="editor-filename">style.css</p>
-        </div>
-        <MonacoEditor
-          class="editor"
-          theme="vs-dark"
-          :options="cssEditorOptions"
-          language="css"
-          v-model="cssCode"
-        />
-      </div>
-
       <div class="html-editor-container">
         <div class="editor-description">
           <b class="editor-title">HTML Viewer</b>
@@ -34,6 +28,20 @@
           :options="htmlEditorOptions"
           language="html"
           v-model="htmlCode"
+        />
+      </div>
+
+      <div class="css-editor-container">
+        <div class="editor-description">
+          <b class="editor-title">CSS Editor</b>
+          <p class="editor-filename">style.css</p>
+        </div>
+        <MonacoEditor
+          class="editor"
+          theme="vs-dark"
+          :options="cssEditorOptions"
+          language="css"
+          v-model="cssCode"
         />
       </div>
     </div>

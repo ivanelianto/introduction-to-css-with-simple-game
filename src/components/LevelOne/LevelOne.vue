@@ -32,6 +32,7 @@ export default {
 {
   background-color: #CCFFFB;
   box-shadow: 0 0 1em #AAF9FF;
+  animation: fadeIn .2s ease-in-out;
 }`,
       level: 1,
       description:
@@ -65,6 +66,17 @@ export default {
             display: flex;
             justify-content: center;
             align-items: center;
+          }
+
+          @keyframes fadeIn {
+            from { 
+              background-color: #2a2a2a;
+            }
+
+            to {
+              box-shadow: 0 0 1em #AAF9FF;
+              background-color: #CCFFFB;
+            }
           }
 
           .light-bulb {
