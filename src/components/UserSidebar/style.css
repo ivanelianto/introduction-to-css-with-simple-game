@@ -26,6 +26,10 @@ code {
   transition: background-color .1s linear;
 }
 
+.level-list li .finished {
+  color: var(--level-finish-color);
+}
+
 .level-list li:first-child {
   margin-top: calc(50px + 3em);
 }

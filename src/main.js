@@ -1,9 +1,8 @@
 import Vue from "vue";
 import App from "./App.vue";
 import VueRouter from "vue-router";
-import LevelOne from "./components/LevelOne/LevelOne.vue";
-import Home from "./components/Home.vue";
 import * as monaco from "monaco-editor";
+import routes from "./routes.js";
 
 Vue.config.productionTip = false;
 
@@ -35,11 +34,6 @@ window.MonacoEnvironment = {
         importScripts('https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.17.1/min/vs/base/worker/workerMain.js');`)}`;
   }
 };
-
-const routes = [
-  { path: "/", component: Home },
-  { path: "/level/1", component: LevelOne }
-];
 
 const router = new VueRouter({
   mode: "history",

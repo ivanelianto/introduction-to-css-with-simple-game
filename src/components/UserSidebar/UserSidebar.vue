@@ -8,14 +8,16 @@
       </span>
 
       <ul class="level-list">
-        <li>
-          <img
-            src="/assets/images/level-not-finished.svg"
-            height="50"
-            width="50"
-            alt=""
-          />
-          Level 1
+        <li v-for="route in routes" :key="route.path">
+          <router-link
+            to="{route.path}"
+            :class="{
+              'main-button': true,
+              finished: route.isFinished ? true : false
+            }"
+          >
+            Level {{ route.level }}
+          </router-link>
         </li>
       </ul>
     </div>
@@ -49,6 +51,7 @@
           <p class="editor-filename">style.css</p>
         </div>
         <MonacoEditor
+          ref="cssEditor"
           class="editor"
           theme="vs-dark"
           :options="cssEditorOptions"
@@ -74,12 +77,11 @@
 
 <script>
 import MonacoEditor from "vue-monaco";
+import routes from "@/routes";
+import { close } from "fs";
 
 const ALT_KEY_CODE = 18;
 const ENTER_KEY_CODE = 13;
-const LEVEL_NOT_FINISHED_SVG_PATH = `${process.env.VUE_APP_ASSETS_PATH}images/level-not-finished.svg`;
-
-console.log(LEVEL_NOT_FINISHED_SVG_PATH);
 
 export default {
   name: "UserSidebar",
@@ -89,6 +91,9 @@ export default {
   props: ["cssInitialCode", "htmlInitialCode", "level", "description", "run"],
   data() {
     return {
+      routes: routes.filter((v, i) => {
+        return v.level !== undefined;
+      }),
       isAltPressed: false,
       cssCode: this.cssInitialCode,
       htmlCode: this.htmlInitialCode,
@@ -117,6 +122,7 @@ export default {
   },
   mounted() {
     $(window).on("click", this.onWindowClick);
+    this.$refs.cssEditor.focus();
   },
   methods: {
     onWindowClick(e) {

@@ -26,13 +26,11 @@ export default {
   data() {
     return {
       show: false,
-      iframme: null,
       htmlInitialCode: `<div class="light-bulb"></div>`,
       cssInitialCode: `/* Type css selector here */
 {
   background-color: #CCFFFB;
   box-shadow: 0 0 1em #AAF9FF;
-  animation: fadeIn .2s ease-in-out;
 }`,
       level: 1,
       description:
@@ -45,6 +43,13 @@ export default {
   },
   methods: {
     run() {
+      let cssSelector = this.$refs.editor.cssCode.split("{")[0].trim();
+
+      if (cssSelector === ".light-bulb") {
+        this.$refs.editor.routes[0].isFinished = true;
+        /** Show Complete Modal */
+      }
+
       this.setContent(this.$refs.editor.cssCode);
     },
     setContent(cssCode) {
@@ -79,12 +84,25 @@ export default {
             }
           }
 
+          @keyframes bounce {
+            0%, 100% {
+              top: -1.5em;
+            }
+
+            90% {
+              top: 0;
+            }
+          }
+
           .light-bulb {
+            position: relative;
             height: 100px;
             width: 100px;
             border: none;
             border-radius: 50%;
             background-color: #2a2a2a;
+            animation: fadeIn .2s ease-in-out,
+              bounce .8s 1s cubic-bezier(1,-0.11,.18,1.1) infinite;
           }
 
           ${cssCode}
