@@ -7,8 +7,21 @@ import * as monaco from "monaco-editor";
 
 Vue.config.productionTip = false;
 
+/**
+ * Using jQuery
+ */
+global.jQuery = require("jquery");
+var $ = global.jQuery;
+window.$ = $;
+
+/**
+ * Using Vue Router
+ */
 Vue.use(VueRouter);
 
+/**
+ * Using Monaco Editor
+ */
 require.config({
   paths: { vs: "https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/min/vs" }
 });

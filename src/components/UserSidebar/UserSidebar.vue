@@ -1,11 +1,23 @@
 <template>
   <div class="sidebar-container" @keydown="onKeyDown" @keyUp="onKeyUp">
     <div class="menu-container">
-      <span class="hamburger-icon-wrapper">
+      <span class="hamburger-icon-wrapper" @click="toggleMenu">
         <span class="hamburger-icon-line"></span>
         <span class="hamburger-icon-line"></span>
         <span class="hamburger-icon-line"></span>
       </span>
+
+      <ul class="level-list">
+        <li>
+          <img
+            src="/assets/images/level-not-finished.svg"
+            height="50"
+            width="50"
+            alt=""
+          />
+          Level 1
+        </li>
+      </ul>
     </div>
 
     <div class="level-description-container">
@@ -65,6 +77,9 @@ import MonacoEditor from "vue-monaco";
 
 const ALT_KEY_CODE = 18;
 const ENTER_KEY_CODE = 13;
+const LEVEL_NOT_FINISHED_SVG_PATH = `${process.env.VUE_APP_ASSETS_PATH}images/level-not-finished.svg`;
+
+console.log(LEVEL_NOT_FINISHED_SVG_PATH);
 
 export default {
   name: "UserSidebar",
@@ -100,7 +115,18 @@ export default {
       }
     };
   },
+  mounted() {
+    $(window).on("click", this.onWindowClick);
+  },
   methods: {
+    onWindowClick(e) {
+      if (
+        $(".hamburger-icon-wrapper").hasClass("active") &&
+        !$(e.target).is($(".hamburger-icon-wrapper"))
+      ) {
+        this.hideMenu();
+      }
+    },
     onKeyDown(e) {
       if (e.keyCode === ALT_KEY_CODE) {
         this.isAltPressed = true;
@@ -114,6 +140,18 @@ export default {
       if (e.keyCode === ALT_KEY_CODE) {
         this.isAltPressed = false;
       }
+    },
+    toggleMenu(e) {
+      if ($(e.target).hasClass("active")) this.hideMenu();
+      else this.showMenu();
+    },
+    hideMenu() {
+      $(".hamburger-icon-wrapper").removeClass("active");
+      $(".level-list").fadeOut();
+    },
+    showMenu() {
+      $(".hamburger-icon-wrapper").addClass("active");
+      $(".level-list").fadeIn();
     }
   }
 };
