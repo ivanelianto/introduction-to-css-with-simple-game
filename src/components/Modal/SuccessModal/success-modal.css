@@ -1,0 +1,66 @@
+.modal-wrapper {
+  z-index: 1000;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, .5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn .5s ease-in-out;
+  opacity: 1;
+}
+
+.modal {
+  box-shadow: 0 0 1em #666;
+  background-color: #f5f6f7;
+  width: 400px;
+  height: 250px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.star-logo {
+  width: 115px;
+  height: 115px;
+  animation: rotating .75s infinite;
+}
+
+.caption {
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  margin-top: 1em;
+}
+
+@keyframes rotating {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}

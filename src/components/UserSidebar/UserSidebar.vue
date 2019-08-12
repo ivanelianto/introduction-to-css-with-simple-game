@@ -9,6 +9,10 @@
 
       <ul class="level-list">
         <li v-for="route in routes" :key="route.path">
+          <img :src="route.isFinished ? levelFinishedImage : levelNotFinishedImage"
+            alt=""
+            class="level-finish-indicator">
+
           <router-link
             to="{route.path}"
             :class="{
@@ -23,7 +27,7 @@
     </div>
 
     <div class="level-description-container">
-      <h3 class="level-text">Level {{ level }}</h3>
+      <h3 :class="{'level-text': true, 'finished': this.isFinished}">Level {{ level }}</h3>
 
       <p class="description-text">
         <span v-html="description"></span>
@@ -79,6 +83,8 @@
 import MonacoEditor from "vue-monaco";
 import routes from "@/routes";
 import { close } from "fs";
+import levelFinishedImage from "@/assets/images/level-finished.svg";
+import levelNotFinishedImage from "@/assets/images/level-not-finished.svg";
 
 const ALT_KEY_CODE = 18;
 const ENTER_KEY_CODE = 13;
@@ -94,6 +100,9 @@ export default {
       routes: routes.filter((v, i) => {
         return v.level !== undefined;
       }),
+      isFinished: false,
+      levelFinishedImage: levelFinishedImage,
+      levelNotFinishedImage: levelNotFinishedImage,
       isAltPressed: false,
       cssCode: this.cssInitialCode,
       htmlCode: this.htmlInitialCode,
@@ -158,6 +167,10 @@ export default {
     showMenu() {
       $(".hamburger-icon-wrapper").addClass("active");
       $(".level-list").fadeIn();
+    },
+    changeLevelToFinishedState() {
+      this.isFinished = true;
+      this.routes[0].isFinished = true;
     }
   }
 };

@@ -12,20 +12,24 @@
     <div class="iframe-container">
       <iframe height="100%" width="100%" />
     </div>
+
+    <SuccessModal ref="modal" v-if="this.isModalVisible" />
   </div>
 </template>
 
 <script>
-import UserSidebar from "./../UserSidebar/UserSidebar";
+import UserSidebar from "@/components/UserSidebar/UserSidebar";
+import SuccessModal from "@/components/Modal/SuccessModal/SuccessModal";
 
 export default {
   name: "LevelOne",
   components: {
-    UserSidebar
+    UserSidebar,
+    SuccessModal
   },
   data() {
     return {
-      show: false,
+      isModalVisible: false,
       htmlInitialCode: `<div class="light-bulb"></div>`,
       cssInitialCode: `/* Type css selector here */
 {
@@ -40,14 +44,28 @@ export default {
   mounted() {
     this.iframe = document.querySelector("iframe").contentWindow.document;
     this.setContent("");
+    $(window).click((e) => {
+      if (this.isModalVisible 
+        && this.isModalLostFocus(e.target))
+      {
+        $(this.$refs.modal.$el).css({
+          "animation": "fadeOut .5s ease-in-out",
+          "opacity": "0"
+        })
+
+        setTimeout(() => {
+          this.isModalVisible = false;
+        }, 550)
+      }
+    })
   },
   methods: {
     run() {
       let cssSelector = this.$refs.editor.cssCode.split("{")[0].trim();
 
       if (cssSelector === ".light-bulb") {
-        this.$refs.editor.routes[0].isFinished = true;
-        /** Show Complete Modal */
+        this.$refs.editor.changeLevelToFinishedState();
+        this.isModalVisible = true;
       }
 
       this.setContent(this.$refs.editor.cssCode);
@@ -111,6 +129,18 @@ export default {
         ${this.htmlInitialCode}
       `);
       this.iframe.close();
+    },
+    isModalLostFocus(clickedElement) {
+      let modalElement = this.$refs.modal;
+
+      if (modalElement === undefined || clickedElement === undefined)
+        return undefined;
+
+      console.log($(modalElement.$el.innerHTML), $(clickedElement));
+      
+      if ($(clickedElement).hasClass("modal-wrapper"))
+        return true;
+      return false;
     }
   }
 };
