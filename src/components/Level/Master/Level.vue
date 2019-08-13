@@ -78,12 +78,17 @@ export default {
     run() {
       let cssSelector = this.$refs.editor.$data.cssCode.split("{")[0].trim();
 
-      if (cssSelector === this.answer) {
+      cssSelector = cssSelector.split(this.answer);
+
+      if (
+        cssSelector.length === 2 &&
+        cssSelector[0] === "" &&
+        cssSelector[1] === ""
+      ) {
+        this.insertUserCSSCode();
         this.$refs.editor.changeLevelToFinishedState();
         this.isModalVisible = true;
       }
-
-      this.insertUserCSSCode();
     },
     isModalLostFocus(clickedElement) {
       let modalElement = this.$refs.modal;

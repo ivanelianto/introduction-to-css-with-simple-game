@@ -32,7 +32,18 @@
 
     <div class="level-description-container">
       <h3 :class="{ 'level-text': true, finished: this.isFinished }">
-        Level {{ level }}
+        <button
+          class="btn transparent-background"
+          @click="onPreviousButtonClicked"
+        >
+          <img src="@/assets/images/previous.svg" class="btn-prev" />
+        </button>
+
+        <p>Level {{ level }}</p>
+
+        <button class="btn transparent-background" @click="onNextButtonClicked">
+          <img src="@/assets/images/previous.svg" class="btn-next" />
+        </button>
       </h3>
 
       <p class="description-text">
@@ -72,10 +83,6 @@
     </div>
 
     <div class="action-button-container">
-      <button class="btn" @click="onPreviousButtonClicked">
-        <img src="@/assets/images/previous.svg" class="btn-prev" />
-      </button>
-
       <button
         id="btn-run"
         class="btn btn-run"
@@ -83,10 +90,6 @@
         title="Shortcut: Alt + Enter"
       >
         Run
-      </button>
-
-      <button class="btn" @click="onNextButtonClicked">
-        <img src="@/assets/images/previous.svg" class="btn-next" />
       </button>
     </div>
   </div>

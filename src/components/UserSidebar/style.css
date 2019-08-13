@@ -59,7 +59,8 @@ code {
   z-index: 999;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  align-items: center;
+  justify-content: center;
   height: 50px;
   width: 50px;
   box-shadow: 0 0 5px #333;
@@ -74,15 +75,21 @@ code {
 
 .hamburger-icon-line {
   display: block;
-  width: 1.5em;
+  width: 40%;
   height: 1px;
   background-color: #fff;
   transition: all .2s linear;
+  /* position: absolute;
+  left: 30%; */
 }
 
+.hamburger-icon-line:not(:last-child) {
+  margin-bottom: .35em;
+}
+
+/** Hamburger Icon Activated Section */
 .hamburger-icon-wrapper.active .hamburger-icon-line:nth-child(1) {
   transform: rotate(45deg);
-  position: absolute;
   top: 1.5em;
   left: .75em;
 }
@@ -93,27 +100,8 @@ code {
 
 .hamburger-icon-wrapper.active .hamburger-icon-line:nth-child(3) {
   transform: rotate(-45deg);
-  position: absolute;
   top: 1.5em;
   right: .85em;
-}
-
-.hamburger-icon-wrapper .hamburger-icon-line:nth-child(1) {
-  position: absolute;
-  top: 1em;
-  left: .75em;
-}
-
-.hamburger-icon-wrapper .hamburger-icon-line:nth-child(2) {
-  position: absolute;
-  top: 1.5em;
-  left: .75em;
-}
-
-.hamburger-icon-wrapper .hamburger-icon-line:nth-child(3) {
-  position: absolute;
-  top: 2em;
-  left: .75em;
 }
 
 .sidebar-container {
@@ -137,6 +125,12 @@ code {
 
 .level-description-container .level-text {
   margin-bottom: 0.5em;
+  display: flex;
+  align-items: center;
+}
+
+.level-text p {
+  margin: 0em 1em;
 }
 
 .level-description-container .level-text.finished {
@@ -196,8 +190,6 @@ code {
 
 .action-button-container .btn {
   border: none;
-  /* border-radius: 5px; */
-  background-color: transparent;
   color: #fff;
   cursor: pointer;
 }
@@ -206,7 +198,12 @@ code {
   margin-right: 1em;
 }
 
-.action-button-container .btn img {
+.transparent-background {
+  background-color: transparent;
+  border: none;
+}
+
+.transparent-background img {
   width: 25px;
   height: 25px;
 }
@@ -217,9 +214,6 @@ code {
   padding: 1em 1.5em;
   transition: all .2s linear;
   padding: 1em 1.5em;
-}
-
-.btn-run:hover {
   color: var(--dark-background-color);
   background-color: var(--level-finish-color);
 }
@@ -229,6 +223,7 @@ code {
 }
 
 .btn-prev, .btn-next {
+  background-color: transparent;
   transition: all .2s linear;
   width: 50px;
   height: 50px;
