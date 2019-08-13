@@ -11,7 +11,9 @@
 
 <script>
 import Level from "@/components/Level/Master/Level";
-import template from "./template.js";
+import { metadata } from "./metadata.js";
+
+console.log(metadata);
 
 export default {
   name: "LevelOne",
@@ -22,7 +24,7 @@ export default {
     return {
       isModalVisible: false,
       level: 1,
-      description: "Select <code>h1</code> type element to highlight the text.",
+      description: metadata.description,
       htmlInitialCode: `<h1>Hello, World</div>`,
       cssInitialCode: `/* Type css selector here */
 {
@@ -30,7 +32,7 @@ export default {
   animation: pulse .5s ease-out infinite;
 }`,
       answer: "h1",
-      iframeCSS: template
+      iframeCSS: metadata.css
     };
   }
 };
