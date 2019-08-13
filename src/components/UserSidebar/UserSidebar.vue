@@ -9,17 +9,21 @@
 
       <ul class="level-list">
         <li v-for="route in routes" :key="route.path">
-          <img :src="route.isFinished ? levelFinishedImage : levelNotFinishedImage"
-            alt=""
-            class="level-finish-indicator">
-
           <router-link
-            to="{route.path}"
+            :to="route.path"
             :class="{
               'main-button': true,
               finished: route.isFinished ? true : false
             }"
           >
+            <img
+              :src="
+                route.isFinished ? levelFinishedImage : levelNotFinishedImage
+              "
+              alt=""
+              class="level-finish-indicator"
+            />
+
             Level {{ route.level }}
           </router-link>
         </li>
@@ -27,7 +31,9 @@
     </div>
 
     <div class="level-description-container">
-      <h3 :class="{'level-text': true, 'finished': this.isFinished}">Level {{ level }}</h3>
+      <h3 :class="{ 'level-text': true, finished: this.isFinished }">
+        Level {{ level }}
+      </h3>
 
       <p class="description-text">
         <span v-html="description"></span>
@@ -82,7 +88,6 @@
 <script>
 import MonacoEditor from "vue-monaco";
 import routes from "@/routes";
-import { close } from "fs";
 import levelFinishedImage from "@/assets/images/level-finished.svg";
 import levelNotFinishedImage from "@/assets/images/level-not-finished.svg";
 
@@ -130,6 +135,12 @@ export default {
     };
   },
   mounted() {
+    this.routes.forEach(route => {
+      if (route.level === this.level) {
+        this.isFinished = route.isFinished;
+      }
+    });
+
     $(window).on("click", this.onWindowClick);
     this.$refs.cssEditor.focus();
   },
@@ -170,7 +181,12 @@ export default {
     },
     changeLevelToFinishedState() {
       this.isFinished = true;
-      this.routes[0].isFinished = true;
+
+      this.routes.forEach(route => {
+        if (route.level === this.level) {
+          route.isFinished = true;
+        }
+      });
     }
   }
 };
