@@ -72,7 +72,7 @@
     </div>
 
     <div class="action-button-container">
-      <button class="btn">
+      <button class="btn" @click="onPreviousButtonClicked">
         <img src="@/assets/images/previous.svg" class="btn-prev" />
       </button>
 
@@ -85,7 +85,7 @@
         Run
       </button>
 
-      <button class="btn">
+      <button class="btn" @click="onNextButtonClicked">
         <img src="@/assets/images/previous.svg" class="btn-next" />
       </button>
     </div>
@@ -173,6 +173,20 @@ export default {
       if (e.keyCode === ALT_KEY_CODE) {
         this.isAltPressed = false;
       }
+    },
+    onPreviousButtonClicked() {
+      this.routes.forEach((route, index) => {
+        if (route.path === this.$route.path && index > 0)
+          this.$router.push({ path: this.routes[index - 1].path });
+      });
+    },
+    onNextButtonClicked() {
+      this.routes.some((route, index) => {
+        if (route.path === this.$route.path && index < this.routes.length - 1) {
+          this.$router.push({ path: this.routes[index + 1].path });
+          return true;
+        }
+      });
     },
     toggleMenu(e) {
       if ($(e.target).hasClass("active")) this.hideMenu();
