@@ -100,6 +100,7 @@ import MonacoEditor from "vue-monaco";
 import routes from "@/routes";
 import levelFinishedImage from "@/assets/images/level-finished.svg";
 import levelNotFinishedImage from "@/assets/images/level-not-finished.svg";
+import { debounce, throttle } from "lodash";
 
 const ALT_KEY_CODE = 18;
 const ENTER_KEY_CODE = 13;
@@ -145,6 +146,8 @@ export default {
     };
   },
   mounted() {
+    this.toggleMenu = throttle(this.toggleMenu, 410);
+
     this.routes.forEach(route => {
       if (route.level === this.level) {
         this.isFinished = route.isFinished;
@@ -196,12 +199,12 @@ export default {
       else this.showMenu();
     },
     hideMenu() {
-      $(".hamburger-icon-wrapper").removeClass("active");
       $(".level-list").fadeOut();
+      $(".hamburger-icon-wrapper").removeClass("active");
     },
     showMenu() {
-      $(".hamburger-icon-wrapper").addClass("active");
       $(".level-list").fadeIn();
+      $(".hamburger-icon-wrapper").addClass("active");
     },
     changeLevelToFinishedState() {
       this.isFinished = true;

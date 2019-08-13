@@ -88,10 +88,13 @@ code {
 }
 
 /** Hamburger Icon Activated Section */
+.hamburger-icon-wrapper.active .hamburger-icon-line {
+  position: absolute;
+  margin: 0;
+}
+
 .hamburger-icon-wrapper.active .hamburger-icon-line:nth-child(1) {
   transform: rotate(45deg);
-  top: 1.5em;
-  left: .75em;
 }
 
 .hamburger-icon-wrapper.active .hamburger-icon-line:nth-child(2) {
@@ -100,9 +103,8 @@ code {
 
 .hamburger-icon-wrapper.active .hamburger-icon-line:nth-child(3) {
   transform: rotate(-45deg);
-  top: 1.5em;
-  right: .85em;
 }
+/** End of Hamburger Icon Activated Section */
 
 .sidebar-container {
   min-height: 100vh;
@@ -124,7 +126,7 @@ code {
 }
 
 .level-description-container .level-text {
-  margin-bottom: 0.5em;
+  margin-bottom: 1em;
   display: flex;
   align-items: center;
 }

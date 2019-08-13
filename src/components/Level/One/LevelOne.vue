@@ -13,8 +13,6 @@
 import Level from "@/components/Level/Master/Level";
 import { metadata } from "./metadata.js";
 
-console.log(metadata);
-
 export default {
   name: "LevelOne",
   components: {
