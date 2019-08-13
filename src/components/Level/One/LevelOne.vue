@@ -23,7 +23,7 @@ export default {
       isModalVisible: false,
       level: 1,
       description:
-        "Select <code>light-bulb</code> class element to turn on the light bulb.",
+        "In this level, Select <code>light-bulb</code> class element to turn on the light bulb.",
       htmlInitialCode: `<div class="light-bulb"></div>`,
       cssInitialCode: `/* Type css selector here */
 {

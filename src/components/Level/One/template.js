@@ -1,23 +1,6 @@
-export default `<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+import masterTemplate from "@/components/Level/Master/master-template.js";
 
-html {
-  height: 100%;
-}
-
-body {
-  background-color: #202020;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
-@keyframes fadeIn {
+export default `${masterTemplate}@keyframes fadeIn {
   from { 
     background-color: #2a2a2a;
   }

@@ -72,15 +72,22 @@
     </div>
 
     <div class="action-button-container">
+      <button class="btn">
+        <img src="@/assets/images/previous.svg" class="btn-prev" />
+      </button>
+
       <button
         id="btn-run"
-        class="btn"
+        class="btn btn-run"
         @click="run"
         title="Shortcut: Alt + Enter"
       >
         Run
       </button>
-      <button class="btn">Next</button>
+
+      <button class="btn">
+        <img src="@/assets/images/previous.svg" class="btn-next" />
+      </button>
     </div>
   </div>
 </template>
