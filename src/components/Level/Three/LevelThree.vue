@@ -14,25 +14,26 @@ import Level from "@/components/Level/Master/Level";
 import template from "./template.js";
 
 export default {
-  name: "LevelOne",
+  name: "LevelThree",
   components: {
     Level
   },
   data() {
     return {
       isModalVisible: false,
-      level: 1,
-      description: "Select <code>h1</code> type element to highlight the text.",
-      htmlInitialCode: `<h1>Hello, World</div>`,
+      level: 3,
+      description:
+        "In this level, Select <code>light-bulb</code> class element to turn on the light bulb.",
+      htmlInitialCode: `<div class="light-bulb"></div>`,
       cssInitialCode: `/* Type css selector here */
 {
-  color: #ddd;
-  animation: pulse .5s ease-out infinite;
+  background-color: #CCFFFB;
+  box-shadow: 0 0 1em #AAF9FF;
 }`,
-      answer: "h1",
+      answer: ".light-bulb",
       iframeCSS: template
     };
   }
 };
 </script>
-<style src="./level-one.css"></style>
+<style src="./level-three.css"></style>

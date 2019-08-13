@@ -1,34 +1,27 @@
 import masterTemplate from "@/components/Level/Master/master-template.js";
 
-export default `${masterTemplate}@keyframes fadeIn {
-  from { 
-    background-color: #2a2a2a;
-  }
-
-  to {
-    box-shadow: 0 0 1em #AAF9FF;
-    background-color: #CCFFFB;
-  }
-}
-
-@keyframes bounce {
+export default `${masterTemplate}@keyframes rotating {
   0%, 100% {
-    top: -1.5em;
+    transform: rotate(2deg);
   }
 
-  90% {
-    top: 0;
+  50% {
+    transform: rotate(-2deg);
   }
 }
 
-.light-bulb {
+@keyframes pulse {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+
+h1 {
   position: relative;
-  height: 100px;
-  width: 100px;
-  border: none;
-  border-radius: 50%;
-  background-color: #2a2a2a;
-  animation: fadeIn .2s ease-in-out,
-    bounce .8s 1s cubic-bezier(1,-0.11,.18,1.1) infinite;
+  font-family: Arial;
+  animation: rotating .5s cubic-bezier(1,-0.11,.18,1.1) infinite;
 }
 </style>`;
