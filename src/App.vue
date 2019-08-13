@@ -19,6 +19,7 @@ export default {
   margin: 0;
   outline: none;
   box-sizing: border-box;
+  user-select: none;
 }
 
 a {

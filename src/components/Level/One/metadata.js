@@ -30,7 +30,7 @@ export const metadata = {
   description: `
     Select <code>h1</code> type element to highlight the text.
 
-    <h4 style="margin: 1.5em 0 .5em 0">Example</h4>
+    <h4 class="example">Example</h4>
     <p>
         <code>div</code> selects all <code>&lt;div&gt;</code> elements.
     </p>

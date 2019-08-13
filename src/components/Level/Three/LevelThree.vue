@@ -11,7 +11,7 @@
 
 <script>
 import Level from "@/components/Level/Master/Level";
-import template from "./template.js";
+import { metadata } from "./metadata.js";
 
 export default {
   name: "LevelThree",
@@ -22,8 +22,7 @@ export default {
     return {
       isModalVisible: false,
       level: 3,
-      description:
-        "In this level, Select <code>light-bulb</code> class element to turn on the light bulb.",
+      description: metadata.description,
       htmlInitialCode: `<div class="light-bulb"></div>`,
       cssInitialCode: `/* Type css selector here */
 {
@@ -31,7 +30,7 @@ export default {
   box-shadow: 0 0 1em #AAF9FF;
 }`,
       answer: ".light-bulb",
-      iframeCSS: template
+      iframeCSS: metadata.css
     };
   }
 };
