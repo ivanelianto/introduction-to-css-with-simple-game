@@ -20,6 +20,22 @@ export default {
   outline: none;
   box-sizing: border-box;
   user-select: none;
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #191919;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #171717;
+  border-radius: 10px;
 }
 
 a {

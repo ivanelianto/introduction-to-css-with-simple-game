@@ -146,7 +146,7 @@ export default {
     };
   },
   mounted() {
-    this.toggleMenu = throttle(this.toggleMenu, 410);
+    this.toggleMenu = throttle(this.toggleMenu, 500);
 
     this.routes.forEach(route => {
       if (route.level === this.level) {

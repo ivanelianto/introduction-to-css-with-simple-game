@@ -12,19 +12,28 @@ export const metadata = {
     }
   }
 
-  @keyframes pulse {
-    from {
-      transform: scale(1);
-    }
-    to {
-      transform: scale(1.1);
-    }
-  }
-
   h1 {
     position: relative;
     font-family: Arial;
     animation: rotating .5s cubic-bezier(1,-0.11,.18,1.1) infinite;
+    background-color: #000;
+    box-shadow: 0 0 1em #333;
+    padding: 1em;
+    transition: all .2s linear;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+  }
+
+  @keyframes flip {
+    from { transform: rotateX(180deg); }
+    to { transform: rotateX(0deg); }
   }
   </style>`,
   description: `

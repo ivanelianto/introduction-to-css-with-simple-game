@@ -27,7 +27,9 @@ export default {
       cssInitialCode: `/* Type css selector here */
 {
   color: #ddd;
-  animation: pulse .5s ease-out infinite;
+  background-color: transparent;
+  animation: pulse .5s ease-out infinite, flip 1s cubic-bezier(0,-0.33,1,-0.24);
+  box-shadow: none;
 }`,
       answer: "h1",
       iframeCSS: metadata.css

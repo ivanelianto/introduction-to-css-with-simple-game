@@ -11,7 +11,7 @@
 
 <script>
 import Level from "@/components/Level/Master/Level";
-import template from "./template";
+import { metadata } from "./metadata";
 
 export default {
   name: "LevelTwo",
@@ -22,16 +22,16 @@ export default {
     return {
       isModalVisible: false,
       level: 2,
-      description:
-        "Select <code>light-bulb</code> class element to turn on the light bulb.",
-      htmlInitialCode: `<div class="light-bulb"></div>`,
+      description: metadata.description,
+      htmlInitialCode: `<div class="chemical" id="copper"></div>
+<div class="chemical" id="manganese"></div>
+<div class="chemical" id="nickel"></div>`,
       cssInitialCode: `/* Type css selector here */
 {
-  background-color: #CCFFFB;
-  box-shadow: 0 0 1em #AAF9FF;
+  background: linear-gradient(0deg, #f06292 70%, #202020 0%);
 }`,
-      answer: ".light-bulb",
-      iframeCSS: template
+      answer: "#manganese",
+      iframeCSS: metadata.css
     };
   }
 };

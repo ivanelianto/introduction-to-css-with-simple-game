@@ -142,6 +142,7 @@ code {
 .level-description-container .description-text {
   min-height: 50px;
   margin-bottom: 2em;
+  line-height: 1.25em;
 }
 
 .editor-container {
